@@ -4,7 +4,7 @@ final class LogPrint extends LogOutput {
   @override
   void output(OutputEvent event) {
     for (var line in event.lines) {
-      print(line);
+      debugPrint(line, wrapWidth: 1024);
     }
   }
 }

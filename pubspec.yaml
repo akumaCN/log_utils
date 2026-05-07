@@ -1,6 +1,6 @@
 name: log_utils
 description: "for log"
-version: 1.0.0
+version: 1.0.1
 homepage:
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  logger: ^2.6.1
+  logger: ^2.7.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
-# log_utils
+# log_utils_plus
 
-`log_utils` 是一个基于 [`logger`](https://pub.dev/packages/logger) 封装的 Flutter 日志工具，保留简单的静态调用方式，同时补上了常用的级别控制、输出配置和耗时打点能力。
+`log_utils_plus` 是一个基于 [`logger`](https://pub.dev/packages/logger) 封装的 Flutter 日志工具，保留简单的静态调用方式，同时补上了常用的级别控制、输出配置和耗时打点能力。
 
 ## Features
 
@@ -16,7 +16,7 @@
 
 ```yaml
 dependencies:
-  log_utils:
+  log_utils_plus:
     git:
       url: https://github.com/akumaCN/log_utils.git
 ```
@@ -24,7 +24,7 @@ dependencies:
 然后在代码中导入：
 
 ```dart
-import 'package:log_utils/log_utils_lib.dart';
+import 'package:log_utils_plus/log_utils_lib.dart';
 ```
 
 ## Usage

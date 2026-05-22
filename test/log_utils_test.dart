@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:log_utils/log_utils_lib.dart';
+import 'package:log_utils_plus/log_utils_lib.dart';
 import 'package:logger/logger.dart' show Logger;
 
 void main() {

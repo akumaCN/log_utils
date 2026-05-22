@@ -1,44 +1,48 @@
 # log_utils_plus
 
-`log_utils_plus` 是一个基于 [`logger`](https://pub.dev/packages/logger) 封装的 Flutter 日志工具，保留简单的静态调用方式，同时补上了常用的级别控制、输出配置和耗时打点能力。
+A lightweight Flutter logging utility built on top of [`logger`](https://pub.dev/packages/logger).
+
+`log_utils_plus` keeps the simple static API of `LogUtils.d/i/w/e/f`, while adding runtime configuration, level control, and lightweight timing checkpoints for debugging and performance tracing.
 
 ## Features
 
-- 直接使用 `LogUtils.d/i/w/e/f` 输出日志
-- 支持 `setLevel`、`disable`、`enable` 控制日志级别
-- 支持 `configure` 自定义颜色、emoji、输出目标和时间提供器
-- 内置 `logTimeEvent`，可记录同一 key 的间隔耗时
-- 适合调试期和业务埋点式日志场景
+- Simple static logging API
+- Runtime log level control
+- Custom output and style configuration
+- Timing checkpoints with `logTimeEvent()`
+- Works well for app debugging and lightweight profiling
 
-## Getting started
+## Installation
 
-在 `pubspec.yaml` 中引入：
+Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  log_utils_plus:
-    git:
-      url: https://github.com/akumaCN/log_utils.git
+  log_utils_plus: ^1.2.0
 ```
 
-然后在代码中导入：
+Import it in your code:
 
 ```dart
 import 'package:log_utils_plus/log_utils_lib.dart';
 ```
 
-## Usage
+## Quick start
 
-基础日志：
+Basic logging:
 
 ```dart
 LogUtils.d('debug message');
-LogUtils.i('user login success');
+LogUtils.i('login success');
 LogUtils.w('cache is stale');
-LogUtils.e('request failed', error: exception, stackTrace: stackTrace);
+LogUtils.e(
+  'request failed',
+  error: exception,
+  stackTrace: stackTrace,
+);
 ```
 
-控制日志级别：
+Control log level:
 
 ```dart
 LogUtils.setLevel(Level.warning);
@@ -50,27 +54,37 @@ LogUtils.disable();
 LogUtils.enable();
 ```
 
-自定义输出与样式：
+## Configuration
+
+Customize logger behavior at runtime:
 
 ```dart
 LogUtils.configure(
   colors: false,
   printEmojis: false,
+  lineLength: 100,
   output: LogPrint(
     writer: (line) {
-      // 写入本地文件、上报平台或自定义控制台
       print(line);
     },
   ),
 );
 ```
 
-记录耗时：
+Reset to defaults:
+
+```dart
+LogUtils.resetConfiguration();
+```
+
+## Timing checkpoints
+
+Use `logTimeEvent()` to track elapsed time between checkpoints with the same key:
 
 ```dart
 LogUtils.logTimeEvent('fetch profile start', key: 'profile');
 
-// ... do something
+// do something
 
 final elapsed = LogUtils.logTimeEvent(
   'fetch profile finish',
@@ -81,9 +95,27 @@ final elapsed = LogUtils.logTimeEvent(
 print('elapsed: ${elapsed.inMilliseconds}ms');
 ```
 
-## API notes
+Reset a single key or all keys:
 
-- `logTimeEvent` 首次调用会返回 `Duration.zero`
-- `resetTime(key: ...)` 会清除单个计时 key
-- `resetAllTimes()` 会清空全部计时状态
-- `resetConfiguration()` 会恢复默认日志配置
+```dart
+LogUtils.resetTime(key: 'profile');
+LogUtils.resetAllTimes();
+```
+
+## API overview
+
+- `LogUtils.t()` trace log
+- `LogUtils.d()` debug log
+- `LogUtils.i()` info log
+- `LogUtils.w()` warning log
+- `LogUtils.e()` error log
+- `LogUtils.f()` fatal log
+- `LogUtils.log()` generic level-based logging
+- `LogUtils.configure()` update logger configuration
+- `LogUtils.resetConfiguration()` restore default configuration
+- `LogUtils.logTimeEvent()` record and return elapsed time
+
+## Repository
+
+- Homepage: [https://github.com/akumaCN/log_utils](https://github.com/akumaCN/log_utils)
+- Repository: [https://github.com/akumaCN/log_utils](https://github.com/akumaCN/log_utils)

@@ -4,6 +4,8 @@ A lightweight Flutter logging utility built on top of [`logger`](https://pub.dev
 
 `log_utils_plus` keeps the simple static API of `LogUtils.d/i/w/e/f`, while adding runtime configuration, level control, and lightweight timing checkpoints for debugging and performance tracing.
 
+[中文文档](README.zh.md)
+
 ## Features
 
 - Simple static logging API

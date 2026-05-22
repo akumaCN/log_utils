@@ -18,7 +18,7 @@
 dependencies:
   log_utils:
     git:
-      url: http://gitlab.dt.dramatalk.live/vahaflix/flutter/log_utils.git
+      url: https://github.com/akumaCN/log_utils.git
 ```
 
 然后在代码中导入：

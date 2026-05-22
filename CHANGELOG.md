@@ -1,3 +1,6 @@
+## 1.2.0
+- test
+
 ## 1.1.0
 
 - Added `configure()` for runtime logger customization.
